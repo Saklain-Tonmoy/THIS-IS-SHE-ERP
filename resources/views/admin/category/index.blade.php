@@ -2,7 +2,6 @@
 
 @section('css')
 <link href="{{asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/plugins/sweetalert/sweetalert.css')}}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -14,9 +13,11 @@
         <hr />
         <div class="card">
             <div class="card-body">
-                <h6 class="mb-0 text-uppercase">Category List</h6>
+                <h6 class="mb-3 text-uppercase">Category List</h6>
                 <!-- Button trigger modal -->
-				<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleScrollableModal">Scrollable Modal</button>
+                <div class="col">
+					<button type="button" class="btn btn-success" px-5 data-bs-toggle="modal" data-bs-target="#exampleScrollableModal"><i class="bx bx-plus-medical mr-1"></i>Add Category</button>
+				</div>
                 <!-- Modal -->
                 <div class="modal fade" id="exampleScrollableModal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable">
@@ -80,11 +81,11 @@
                                     <td>{{\App\Models\Category::where('category_id', $item->parent_id)->value('category_name')}}</td>
                                     <td>{{$item->status}}</td>
                                     <td>
-                                        <a href="{{route('category.edit', $item->category_id)}}" class="float-left m-2 btn btn-sm btn-outline-warning" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="bx bx-edit"></i></a>
-                                        <form class="float-left" action="{{route('category.destroy', $item->category_id)}}" method="POST">
+                                        <a href="{{route('category.edit', $item->category_id)}}" class="btn btn-sm btn-outline-warning m-2 float-start" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="bx bx-edit"></i></a>
+                                        <form class="float-start" action="{{route('category.destroy', $item->category_id)}}" method="POST">
                                             @csrf
                                             @method('delete')
-                                            <a href="" class="dltBtn m-2 btn btn-sm btn-outline-danger" data-toggle="tooltip" data-id="{{$item->category_id}}" title="delete" data-placement="bottom"><i class="bx bx-trash"></i></a>
+                                            <a href="" class="dltBtn btn btn-sm btn-outline-danger m-2" data-toggle="tooltip" data-id="{{$item->category_id}}" title="delete" data-placement="bottom"><i class="bx bx-trash"></i></a>
                                         </form>
                                     </td>
                                 </tr>
@@ -121,7 +122,6 @@
             lengthChange: false,
             buttons: ['copy', 'excel', 'pdf', 'print']
         });
-
         table.buttons().container()
             .appendTo('#example2_wrapper .col-md-6:eq(0)');
     });
@@ -133,12 +133,10 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
     $('.dltBtn').click(function(e) {
         var form = $(this).closest('form');
         var dataId = $(this).data('category_id');
         e.preventDefault();
-
         swal({
                 title: "Are you sure?",
                 text: "Once deleted, you will not be able to recover this file!",
