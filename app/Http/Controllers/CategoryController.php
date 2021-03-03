@@ -58,7 +58,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.category.edit');
     }
 
     /**
@@ -81,6 +81,18 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findorfail($id);
+        if($category) {
+            $status = $category->delete();
+            if($status) {
+                return redirect()->route('category.index')->with('success', "Successfully deleted category.");
+            }
+            else {
+                return back()->with('error', "Data not found");
+            }
+        }
+        else {
+            return back()->with('error', 'Data not found');
+        }
     }
 }
