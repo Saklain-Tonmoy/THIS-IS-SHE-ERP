@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('layouts.head')
+    @yield('css')
 </head>
 <body class="bg-theme bg-theme1">
 <!-- wrapper -->
@@ -19,6 +20,7 @@
     <!-- theme switcher -->
     @include('layouts.theme_switcher')
     @include('layouts.script')
+    @yield('script')
     
 </body>
 </html>

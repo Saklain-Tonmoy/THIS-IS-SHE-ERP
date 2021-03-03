@@ -2,7 +2,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+            <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">ERP SYSTEM</h4>
@@ -444,7 +444,7 @@
             </a>
             <ul>
                 <li> <a  href="javascript:void(0);"><i class="bx bx-right-arrow-alt"></i>Add Category</a></li>
-                <li> <a  href="javascript:void(0);"><i class="bx bx-right-arrow-alt"></i>Category List</a></li>
+                <li> <a  href="{{route('category.index')}}"><i class="bx bx-right-arrow-alt"></i>Category List</a></li>
             </ul>
         </li>
         <!-- PRODUCT section starts -->        

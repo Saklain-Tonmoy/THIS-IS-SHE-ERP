@@ -19,8 +19,8 @@ class Category extends Migration
             $table->string('category_photo')->nullable();
             $table->boolean('is_parent')->default(true);
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreign('parent_id')->references('category_id')->on('categories')->onDelete('SET NULL');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
