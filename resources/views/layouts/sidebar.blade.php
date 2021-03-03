@@ -423,6 +423,32 @@
         </li>
         <!-- CRM section ends -->
 
+        <li class="menu-label">PRODUCT SECTION</li>
+        <!-- PRODUCT section starts -->
+        <li>
+            <a class="has-arrow" href="javascript:void(0);">
+                <div class="parent-icon"><i class="bx bx-menu"></i>
+                </div>
+                <div class="menu-title">PRODUCT</div>
+            </a>
+            <ul>
+                <li> <a  href="javascript:void(0);"><i class="bx bx-right-arrow-alt"></i>Add Product</a></li>
+                <li> <a  href="javascript:void(0);"><i class="bx bx-right-arrow-alt"></i>Product List</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:void(0);">
+                <div class="parent-icon"><i class="bx bx-menu"></i>
+                </div>
+                <div class="menu-title">PRODUCT CATEGORY</div>
+            </a>
+            <ul>
+                <li> <a  href="javascript:void(0);"><i class="bx bx-right-arrow-alt"></i>Add Category</a></li>
+                <li> <a  href="javascript:void(0);"><i class="bx bx-right-arrow-alt"></i>Category List</a></li>
+            </ul>
+        </li>
+        <!-- PRODUCT section starts -->        
+
         <li class="menu-label">Others</li>
         <li>
             <a class="has-arrow" href="javascript:;">
