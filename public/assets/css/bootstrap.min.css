@@ -4882,7 +4882,7 @@ fieldset:disabled .btn {
 	flex-direction: column;
 	width: 100%;
 	pointer-events: auto;
-	background-color: #171717;
+	background-color: #00638d;
 	background-clip: padding-box;
 	border: 1px solid rgba(255, 255, 255, .2);
 	border-radius: .3rem;
@@ -4949,7 +4949,7 @@ fieldset:disabled .btn {
 }
 @media (min-width: 576px) {
 	.modal-dialog {
-		max-width: 500px;
+		max-width: 65%;
 		margin: 1.75rem auto
 	}
 	.modal-dialog-scrollable {

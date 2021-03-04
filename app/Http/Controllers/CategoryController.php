@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -25,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $parent_category = Category::where('is_parent', 1)->orderBy('category_name', 'ASC')->get();
+        return compact('parent_category');
     }
 
     /**
@@ -36,7 +38,39 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'category_name' => 'string|required',
+            'photo' => 'string|required',
+            'is_parent' => 'sometimes|in:1',
+            'parent_id' => 'nullable',
+            'status' => 'nullable|in:active,inactive'
+        ]);
+
+        $data = $request->all();
+        if($request->is_parent ==1)
+        {
+            $data['parent_id'] = null;
+        }
+        else{
+            $data['parent_id'] = $request->input('parent_id', null);
+        }
+
+        $status = false;
+
+        try{
+            $status = Category::create($data);
+        } catch (Exception $e) {
+
+        }
+
+        $parent_category = Category::where('is_parent', 1)->orderBy('category_name', 'ASC')->get();
+
+        if($status) {
+            return redirect()->route('category.index', compact($parent_category))->with('success', "Successfully created category.");
+        }
+        else {
+            return back()->with('error', "Something went wrong.");
+        }
     }
 
     /**
