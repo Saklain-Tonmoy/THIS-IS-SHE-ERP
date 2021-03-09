@@ -76,7 +76,7 @@
                                             <label for="parent_id" class="col-form-label">Parent Category <span class="text-danger">*</span></label>
                                             <select name="parent_id" class="form-control">
                                                 <option value="">-- Parent Category --</option>
-                                                @foreach($parent_category as $item)
+                                                @foreach($categories as $item)
                                                 <option value="{{$item->id}}" {{old('parent_id') == $item->id ? 'selected' : ''}}>{{$item->title}}</option>
                                                 @endforeach
                                             </select>
